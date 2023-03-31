@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Server Info</title>
+    <style>@import url(style.css);</style>
+  </head>
+  <body  scroll="no">
+    <div id="main">
+      <h1 id="title"> Server Info</h1>
+      <table>
+        <thead>
+          <tr>
+            <th id="nick">Nick</th>
+            <th id="dcid">Discord ID</th>
+            <th id="license">License</th>
+          </tr>
+        </thead>
+        <tbody id="players">
+        </tbody>
+      </table>
+    </div>
+    
+      <script>
+        
+
+        fetchPlayers()
+
+        function fetchPlayers() {
+          fetch("https://servers-frontend.fivem.net/api/servers/single/wz7652/", { cache: "no-cache" })
+            .then(response => response.json())
+            .then(data => {
+              const players = data.Data.players;
+              const playersTable = document.getElementById("players");
+              playersTable.innerHTML = ""; // Wyczyszczenie tabeli przed dodaniem nowych danych
+              const playerCount = players.length;
+              title_ele = document.getElementById("title")
+              title_ele.innerHTML = "Players Info (" + playerCount + ")"
+              players.forEach(player => {
+                const row = document.createElement("tr");
+                const nickCell = document.createElement("td");
+                const licenseCell = document.createElement("td");
+                const dcIdCell = document.createElement("td");
+                const aElement = document.createElement("a");
+                dcIdCell.appendChild(aElement);
+
+                nickCell.innerText = player.name;
+                licenseCell.innerText = player.identifiers.find(id => id.startsWith("license:")).substr(8);
+                const dcId = player.identifiers.find(id => id.startsWith("discord:"));
+                aElement.innerText = dcId ? dcId.substr(8) : "NONE";
+                
+                aElement.innerText = dcId ? dcId.substr(8) : "NONE"
+                if (dcId && dcId !== "NONE") {
+                  aElement.setAttribute("href", `https://discord.id/?prefill=${dcId.substr(8)}`);
+                  aElement.setAttribute("target", "blank")
+                }               
+
+                row.appendChild(nickCell);
+                row.appendChild(aElement);
+                row.appendChild(licenseCell);
+                playersTable.appendChild(row);
+              });
+            })
+            .catch(error => console.log(error));
+        }
+
+        setInterval(fetchPlayers, 30000);
+
+    </script>
+  </body>
+</html>
