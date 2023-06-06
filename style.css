@@ -1,62 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Oswald:wght@500&family=Teko:wght@500&family=Ubuntu:wght@300&display=swap');
 
-html, body {
-height: 100%;
-margin: 0;
-padding: 0;
+html {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-background-color: rgb(43, 43, 43);
-color: white;
-font-family: 'Montserrat', sans-serif;
-background-image: url("https://wallpapercave.com/wp/wp8606700.jpg");
-background-position: center bottom;
-background-size: cover;
-background-repeat: no-repeat;
-min-height: 100%;
-overflow-x: hidden;
+    background-color: rgb(43, 43, 43);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("https://wallpapercave.com/wp/wp8606700.jpg");
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #title {
-font-size: 30px;
-text-align: center;
-margin-top: 10%;
+    font-size: 30px;
+    text-align: center;
+}
+
+#license, #nick, #dcid {
+    font-size: 15px;
 }
 
 #main {
-padding: 10px;
-text-align: left;
-border: 1px solid black;
-border-radius: 10px;
-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.295);
-width: 80%;
-position: relative;
-margin: 0 auto;
-background-color: rgba(0, 0, 0, 0.829);
-margin-top: 10%;
+    padding-left: 7vh;
+    padding-right: 7vh;
+    padding-bottom: 7vh;
+    padding-top: 3vh;
+    text-align: left;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.295);
+    width: 75%;
+    position: relative;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.829);
+    margin-top: 11%;
 }
 
 #nick {
-width: 100%;
+    width: 40%; 
 }
 
 #license {
-width: 100%;
-padding-right: 0;
+    width: 100%;
 }
 
 #dcid {
-text-align: left;
-width: 80%;
-margin-left: 10%;
-margin-top: 10px;
+    text-align: left;
+    width: 40%;
 }
 
+
 a {
-text-decoration: none;
-color: white;
-display: block;
-margin-top: 10px;
-text-align: center;
+    text-decoration: none;
+    color: white;
+    display: block;
+    text-align: center;
+    transition-duration: 0.3s;
+}
+
+a:hover {
+    color: rgb(0, 0, 151)
+
 }
