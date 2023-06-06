@@ -7,7 +7,7 @@
   </head>
   <body  scroll="no">
     <div id="main">
-      <h1 id="title"> Server Info</h1>
+      <h1 id="title">Server Info</h1>
       <table>
         <thead>
           <tr>
@@ -54,6 +54,10 @@
                   aElement.setAttribute("href", `https://discord.id/?prefill=${dcId.substr(8)}`);
                   aElement.setAttribute("target", "blank")
                 }               
+
+                nickCell.setAttribute('id', 'nick');
+                licenseCell.setAttribute('id', 'license');
+                aElement.setAttribute("id", "dcid")
 
                 row.appendChild(nickCell);
                 row.appendChild(aElement);
