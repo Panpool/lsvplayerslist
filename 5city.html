@@ -35,6 +35,11 @@
             .then(response => response.json())
             .then(data => {
               const players = data.Data.players;
+
+              players.sort(function(a, b) {
+                    return parseInt(a.id) - parseInt(b.id);
+              });
+                
               const playersTable = document.getElementById("players");
               playersTable.innerHTML = ""; // Wyczyszczenie tabeli przed dodaniem nowych danych
               const playerCount = players.length;
