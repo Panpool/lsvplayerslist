@@ -41,7 +41,7 @@ body::-webkit-scrollbar{
     text-align: left;
     border: 2.5px solid rgba(209, 209, 209, 0.596);
     border-radius: 15px;
-    width: 65%;
+    width: 55%;
     position: relative;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.205);
@@ -50,7 +50,7 @@ body::-webkit-scrollbar{
 }
 
 #nick {
-    width: 30%;
+    width: 25%;
 }
 
 #license {
@@ -59,11 +59,11 @@ body::-webkit-scrollbar{
 
 #dcid {
     text-align: left;
-    width: 40%;
+    width: 35%;
 }
 
 #ID {
-    width: 30%;
+    width: 5%;
 }
 
 a {
@@ -75,5 +75,5 @@ a {
 }
 
 a:hover {
-    color: rgb(31, 39, 62)
+    color: rgb(79, 45, 201)
 }
