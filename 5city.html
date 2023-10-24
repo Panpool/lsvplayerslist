@@ -15,8 +15,8 @@
             <table>
               <thead>
                 <tr>
+                  <th id="ID">Id</th>
                   <th id="nick">Nick</th>
-                  <th id="ID">ID</th>
                   <th id="dcid">Discord ID</th>
                   <th id="license">License</th>
                 </tr>
@@ -34,21 +34,22 @@
           fetch("https://servers-frontend.fivem.net/api/servers/single/vp4rxq/", { cache: "no-cache" })
             .then(response => response.json())
             .then(data => {
+
               const players = data.Data.players;
 
               players.sort(function(a, b) {
-                    return parseInt(a.id) - parseInt(b.id);
+                return parseInt(a.id) - parseInt(b.id);
               });
-                
+
               const playersTable = document.getElementById("players");
               playersTable.innerHTML = ""; // Wyczyszczenie tabeli przed dodaniem nowych danych
               const playerCount = players.length;
               title_ele = document.getElementById("title")
-              title_ele.innerHTML = "Player List - 5City (" + playerCount + ")"
+              title_ele.innerHTML = "Players Info (" + playerCount + ")"
               players.forEach(player => {
                 const row = document.createElement("tr");
-                const nickCell = document.createElement("td");
                 const idCell = document.createElement("td");
+                const nickCell = document.createElement("td");
                 const licenseCell = document.createElement("td");
                 const dcIdCell = document.createElement("td");
                 const aElement = document.createElement("a");
@@ -71,8 +72,8 @@
                 licenseCell.setAttribute('id', 'license');
                 aElement.setAttribute("id", "dcid");
 
-                row.appendChild(nickCell);
                 row.appendChild(idCell);
+                row.appendChild(nickCell);
                 row.appendChild(aElement);
                 row.appendChild(licenseCell);
                 playersTable.appendChild(row);
@@ -81,7 +82,7 @@
             .catch(error => console.log(error));
         }
 
-        setInterval(fetchPlayers, 20000);
+        setInterval(fetchPlayers, 10000);
 
     </script>
   </body>
