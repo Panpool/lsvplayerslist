@@ -4,7 +4,7 @@
   <head>
     <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
     <meta charset="UTF-8">
-    <title>Server Info - 5City</title>
+    <title>Player List - 5City</title>
     <style>@import url(style.css);</style>
   </head>
   <body>
@@ -44,7 +44,7 @@
               playersTable.innerHTML = ""; // Wyczyszczenie tabeli przed dodaniem nowych danych
               const playerCount = players.length;
               title_ele = document.getElementById("title")
-              title_ele.innerHTML = "Players Info (" + playerCount + ")"
+              title_ele.innerHTML = "Player List - 5City (" + playerCount + ")"
               players.forEach(player => {
                 const row = document.createElement("tr");
                 const nickCell = document.createElement("td");
