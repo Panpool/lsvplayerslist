@@ -11,6 +11,7 @@
       <table>
         <thead>
           <tr>
+            <th id="ID">ID</th>
             <th id="nick">Nick</th>
             <th id="dcid">Discord ID</th>
             <th id="license">License</th>
@@ -38,6 +39,7 @@
               title_ele.innerHTML = "Players Info (" + playerCount + ")"
               players.forEach(player => {
                 const row = document.createElement("tr");
+                const idCell = document.createElement("td");
                 const nickCell = document.createElement("td");
                 const licenseCell = document.createElement("td");
                 const dcIdCell = document.createElement("td");
@@ -45,6 +47,7 @@
                 dcIdCell.appendChild(aElement);
 
                 nickCell.innerText = player.name;
+                idCell.innerText = player.id;
                 licenseCell.innerText = player.identifiers.find(id => id.startsWith("license:")).substr(8);
                 const dcId = player.identifiers.find(id => id.startsWith("discord:"));
                 aElement.innerText = dcId ? dcId.substr(8) : "NONE";
@@ -55,10 +58,12 @@
                   aElement.setAttribute("target", "blank")
                 }               
 
+                idCell.setAttribute('id', 'id');
                 nickCell.setAttribute('id', 'nick');
                 licenseCell.setAttribute('id', 'license');
-                aElement.setAttribute("id", "dcid")
+                aElement.setAttribute("id", "dcid");
 
+                row.appendChild(idCell);
                 row.appendChild(nickCell);
                 row.appendChild(aElement);
                 row.appendChild(licenseCell);
