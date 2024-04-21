@@ -15,7 +15,6 @@
             <div id="groupcount">
               <div id="all_btn" class="all">Noted</div>
               <div id="ekipaPiotra" class="zd">Ekipa Piotra - 0</div>
-              <div id="ekipa27" class="street">Ekipa 27 Street - 0</div>
               <div id="ekipakox" class="kox">Koxy - 0</div>
               <div id="ekipaZjeb" class="zjeb">Zjeby - 0</div>
             </div>
@@ -107,10 +106,7 @@
                                         "778e8a1352c91768ef4a86f58a54870ac8f26559",
                                         "4a77b598fb7aa42f297bbbbc988e7ae5af93fedd",
                                         "89c6ed1074748ec0094e9d51983825b3c9156813",
-										"bab6f1483fdeaeb1e1b446b8d28a32638cc04ba7"];
-
-                const license_street = ["b7258ddf1863cb75de3f80f74eb1edc6c2cac712",
-                                        "1557d0f05a15a18be806008354eebd9feccdeeaa"];
+					"bab6f1483fdeaeb1e1b446b8d28a32638cc04ba7"];
 
                 const license_kox = ["48f623068a2905c98dec2e8be46621daf89347be",
                                     ];
@@ -142,15 +138,6 @@
 
                   count_ekipa_zjeb += 1;
                   
-                }
-                else if(license_street.includes(license)) {
-                  nickCell.classList.add("street");
-                  idCell.classList.add("street");
-                  licenseCell.classList.add("street");
-                  aElement.classList.add("street");
-                  row.classList.add("StreetRow");
-
-                  count_ekipa_27 += 1;
                 }
                 else if(license_kox.includes(license)) {
                   nickCell.classList.add("kox");
