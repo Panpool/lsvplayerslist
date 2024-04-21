@@ -12,6 +12,13 @@
     <div class="parallax">
         <div id="main">
             <h1 id="title">Player List - 5City</h1>
+            <div id="groupcount">
+              <div id="all_btn" class="all">Noted</div>
+              <div id="ekipaPiotra" class="zd">Ekipa Piotra - 0</div>
+              <div id="ekipa27" class="street">Ekipa 27 Street - 0</div>
+              <div id="ekipakox" class="kox">Koxy - 0</div>
+              <div id="ekipaZjeb" class="zjeb">Zjeby - 0</div>
+            </div>
             <table>
               <thead>
                 <tr>
@@ -25,10 +32,28 @@
               </tbody>
             </table>
           </div>
+          <div id="legenda">
+                <div id="left">
+                  <div id="elem_legenda" class="zd">Ekipa Piotra</div>
+                  <div id="elem_legenda" class="street">Ekipa Samira</div>
+                  <div id="elem_legenda" class="kox">Koxy</div>
+                  <div id="elem_legenda" class="zjeb">Zjeby</div>
+                </div>
+                <div id="right">LEGENDA</div>
+          </div>
     </div>
 
 
     <script>
+
+        const count_ekipa_zd_div = document.getElementById("ekipaPiotra");
+        const count_ekipa_kox_div = document.getElementById("ekipakox");
+        const count_ekipa_27_div = document.getElementById("ekipa27");
+        const count_ekipa_zjeb_div = document.getElementById("ekipaZjeb");
+
+        const count_ekipa_all_div = document.getElementById("all_btn");
+
+        var all_tog = false
 
         function fetchPlayers() {
           fetch("https://servers-frontend.fivem.net/api/servers/single/vp4rxq/", { cache: "no-cache" })
@@ -45,7 +70,12 @@
               playersTable.innerHTML = ""; // Wyczyszczenie tabeli przed dodaniem nowych danych
               const playerCount = players.length;
               title_ele = document.getElementById("title")
-              title_ele.innerHTML = "Players Info (" + playerCount + ")"
+              title_ele.innerHTML = "Player List - 5City (" + playerCount + ")"
+              var count_ekipa_zd = 0
+              var count_ekipa_zjeb = 0
+              var count_ekipa_27 = 0
+              var count_ekipa_kox = 0
+
               players.forEach(player => {
                 const row = document.createElement("tr");
                 const idCell = document.createElement("td");
@@ -53,11 +83,14 @@
                 const licenseCell = document.createElement("td");
                 const dcIdCell = document.createElement("td");
                 const aElement = document.createElement("a");
+                
                 dcIdCell.appendChild(aElement);
 
                 nickCell.innerText = player.name;
                 idCell.innerText = player.id;
-                licenseCell.innerText = player.identifiers.find(id => id.startsWith("license:")).substr(8);
+
+                const license = player.identifiers.find(id => id.startsWith("license:")).substr(8);
+                licenseCell.innerText = license
                 const dcId = player.identifiers.find(id => id.startsWith("discord:"));
                 aElement.innerText = dcId ? dcId.substr(8) : "NONE";
                 
@@ -67,6 +100,85 @@
                   aElement.setAttribute("target", "blank")
                 }               
 
+                const license_grendy = ["5304e6eb8d4c3d1a56139f00aa470d71d292291c",
+                                        "0c4e67c58d0f7e556f7fecd6e7c96b2831692172",
+                                        "a104c3dd3cf5a7957cf7570c9dff503ea62ff063",
+                                        "de85bbe71ef26a92964e88459164df433168e099",
+                                        "778e8a1352c91768ef4a86f58a54870ac8f26559",
+                                        "4a77b598fb7aa42f297bbbbc988e7ae5af93fedd",
+                                        "89c6ed1074748ec0094e9d51983825b3c9156813",
+										"bab6f1483fdeaeb1e1b446b8d28a32638cc04ba7"];
+
+                const license_street = ["b7258ddf1863cb75de3f80f74eb1edc6c2cac712",
+                                        "1557d0f05a15a18be806008354eebd9feccdeeaa"];
+
+                const license_kox = ["48f623068a2905c98dec2e8be46621daf89347be",
+                                    ];
+
+                const license_zjeb = ["060cc4c9aa84f464939f988f0a05d3f44c9d5f2a",
+                                      "7130aa69563abf9e3b7bf4bb165c4bc62826545c",
+                                      "2edc852de7fb25118997f81a499c92cc0c2b0718",
+                                      "bebd65e14c0cff8dddd5f9f127cf1c2a1e685fd0",
+                                      "92df951f72bf163d1beb33bbb2ab53b4ce669651",
+                                      "d926289ae1697a387b629e4086cb12b9806710a9"];
+
+                if(license_grendy.includes(license)) {
+                  nickCell.classList.add("zd");
+                  idCell.classList.add("zd");
+                  licenseCell.classList.add("zd");
+                  aElement.classList.add("zd");
+
+                  row.classList.add("zdRow");
+
+                  count_ekipa_zd += 1;
+                  
+                }
+                else if(license_zjeb.includes(license)) {
+                  nickCell.classList.add("zjeb");
+                  idCell.classList.add("zjeb");
+                  licenseCell.classList.add("zjeb");
+                  aElement.classList.add("zjeb");
+
+                  row.classList.add("zjebRow");
+
+                  count_ekipa_zjeb += 1;
+                  
+                }
+                else if(license_street.includes(license)) {
+                  nickCell.classList.add("street");
+                  idCell.classList.add("street");
+                  licenseCell.classList.add("street");
+                  aElement.classList.add("street");
+                  row.classList.add("StreetRow");
+
+                  count_ekipa_27 += 1;
+                }
+                else if(license_kox.includes(license)) {
+                  nickCell.classList.add("kox");
+                  idCell.classList.add("kox");
+                  licenseCell.classList.add("kox");
+                  aElement.classList.add("kox");
+                  row.classList.add("koxRow");
+
+                  count_ekipa_kox += 1;
+                }
+                else {
+                  nickCell.classList.add("other");
+                  idCell.classList.add("other");
+                  licenseCell.classList.add("other");
+                  aElement.classList.add("other");
+
+                  row.classList.add("otherRow")
+                }
+
+                count_ekipa_zd_div.innerHTML = "Ekipa Piotra - " + count_ekipa_zd;
+                count_ekipa_27_div.innerHTML = "Ekipa 27 Street - " + count_ekipa_27;
+                count_ekipa_kox_div.innerHTML = "Koxy - " + count_ekipa_kox;
+                count_ekipa_zjeb_div.innerHTML = "Zjeby - " + count_ekipa_zjeb;
+
+                var all_count = count_ekipa_27 + count_ekipa_zd + count_ekipa_kox + count_ekipa_zjeb;
+
+                count_ekipa_all_div.innerHTML = "Noted - " + all_count;
                 nickCell.setAttribute('id', 'nick');
                 idCell.setAttribute('id', 'ID');
                 licenseCell.setAttribute('id', 'license');
@@ -77,12 +189,57 @@
                 row.appendChild(aElement);
                 row.appendChild(licenseCell);
                 playersTable.appendChild(row);
+
+                
+                if(all_tog) {
+                  toggle(true)
+                }
+                else {
+                  toggle(false)
+                }
+
               });
             })
             .catch(error => console.log(error));
         }
         fetchPlayers();
-        setInterval(fetchPlayers, 20000);
+
+        function toggle(on) {
+
+          if(on) {
+            const all_elem = document.querySelectorAll('.otherRow');
+            count_ekipa_all_div.style = "background-color: rgba(255, 255, 255, 0.13);"
+            all_elem.forEach(element => {
+              element.style.display = 'none';
+            });
+          }
+
+          if(!on) {
+            const all_elem = document.querySelectorAll('.otherRow');
+            count_ekipa_all_div.style.removeProperty("background-color")
+            all_elem.forEach(element => {
+              element.style.removeProperty('display');
+            });
+          }
+
+
+        }
+
+        function all() {
+          if(!all_tog) {
+            all_tog = true;
+            toggle(true)
+          }
+          else {
+            all_tog = false;
+            toggle(false)
+          }
+          
+        }
+
+        count_ekipa_all_div.addEventListener("click", all);
+
+        setInterval(fetchPlayers, 10000);
 
     </script>
   </body>

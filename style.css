@@ -2,7 +2,7 @@
 
 body {
     background-color: rgb(0, 0, 0);
-    color: rgb(209, 209, 209);
+    color: rgb(190, 190, 190);
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
@@ -17,7 +17,7 @@ body::-webkit-scrollbar{
     background-position: center top; /* Zmieniłem pozycję tła na "top" */
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 50vh;
+    min-height: 95vh;
     position: sticky;
     padding-top: 7vh;
     padding-bottom: 7vh;
@@ -45,8 +45,6 @@ body::-webkit-scrollbar{
     position: relative;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.205);
-    backdrop-filter: blur(5px);
-
 }
 
 #nick {
@@ -68,7 +66,7 @@ body::-webkit-scrollbar{
 
 a {
     text-decoration: none;
-    color: rgb(209, 209, 209);
+    color: rgb(190, 190, 190);
     display: block;
     text-align: center;
     transition-duration: 0.3s;
@@ -76,4 +74,108 @@ a {
 
 a:hover {
     color: rgb(79, 45, 201)
+}
+
+.zd {
+    color: rgb(212, 113, 0);
+}
+
+.street {
+    color: rgb(207, 2, 2);
+}
+
+.zjeb {
+    color: rgb(80, 163, 11);
+}
+
+.kox {
+    color: rgb(0, 159, 252);
+}
+
+#legenda {
+    color: white;
+    width: 230px;
+    background-color: rgba(0, 0, 0, 0.37);
+    position: fixed;
+    top: 7vh;
+    display: inline-flex;
+    left: -200px;
+    user-select: none;
+    transition-duration: 1.5s;
+    padding: 10px 10px 10px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    border: 2.5px solid rgb(255, 255, 255);
+    text-align: left;
+    align-items: center;
+}
+
+#right {
+    width: 15%;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    padding-right: 10px;
+}
+
+#left {
+    align-items: center;
+    padding-left: 20px;
+    width: 85%;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#legenda:hover {
+    left: -25px;
+}
+
+#elem_legenda {
+    margin: 10px 10px 10px 10px;
+    font-weight: 900;
+}
+
+#groupcount {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+#ekipaPiotra, #ekipaZjeb, #ekipa27, #ekipakox, #all_btn {
+    display: inline-flex;
+    margin: 5px 15px 15px 5px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    user-select: none;
+}
+
+#ekipaPiotra {
+    background-color: rgba(255, 145, 0, 0.212);
+}
+
+#ekipaZjeb {
+    background-color: rgba(80, 163, 11, 0.212);
+}
+
+#ekipa27 {
+    background-color: rgba(155, 0, 0, 0.212);
+}
+
+#ekipakox {
+    background-color: rgba(0, 159, 252, 0.13);
+}
+
+#all_btn {
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+#all_btn:hover {
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+.other {
+    display: normal;
 }
