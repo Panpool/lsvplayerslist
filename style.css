@@ -108,6 +108,7 @@ a:hover {
     border: 2.5px solid rgb(255, 255, 255);
     text-align: left;
     align-items: center;
+    display: none;
 }
 
 #right {
